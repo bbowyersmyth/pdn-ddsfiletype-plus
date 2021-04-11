@@ -51,6 +51,12 @@ namespace DdsFileTypePlus.Interop
                 {
                     DdsIO_x86.FreeLoadInfo(ref this.info);
                 }
+#if !NET47
+                else if (RuntimeInformation.ProcessArchitecture == Architecture.Arm64)
+                {
+                    DdsIO_ARM64.FreeLoadInfo(ref this.info);
+                }
+#endif
             }
         }
 
